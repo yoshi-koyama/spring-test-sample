@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.nio.charset.StandardCharsets;
 
@@ -28,6 +29,7 @@ class UserRestControllerTest {
 
   @Test
   @DataSet(value = "users.yml")
+  @Transactional
   void ユーザーが取得できること() throws Exception {
     String response = mockMvc.perform(MockMvcRequestBuilders.get("/api/users"))
         .andExpect(MockMvcResultMatchers.status().isOk())
@@ -51,6 +53,7 @@ class UserRestControllerTest {
   @Test
   @DataSet(value = "empty.yml")
   @ExpectedDataSet(value = "expectedAfterInsert.yml", ignoreCols = "id")
+  @Transactional
   void ユーザーが登録できること() throws Exception {
     String response = mockMvc.perform(MockMvcRequestBuilders.post("/api/users").contentType(MediaType.APPLICATION_JSON).content("{\"name\":\"小山\"}"))
         .andExpect(MockMvcResultMatchers.status().isCreated())
