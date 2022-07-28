@@ -18,27 +18,28 @@ import static org.assertj.core.api.Assertions.assertThat;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class UserMapperTest {
 
-    @Autowired
-    UserMapper userMapper;
+  @Autowired
+  UserMapper userMapper;
 
-    @Test
-    @DataSet(value = "users.yml")
-    void すべてのユーザーが取得できること() {
-        List<User> users = userMapper.findAll();
-        assertThat(users)
-                .hasSize(3)
-                .contains(
-                        new User(1, "清水"),
-                        new User(2, "小山"),
-                        new User(3, "田中")
-                );
-    }
+  @Test
+  @DataSet(value = "users.yml")
+  void すべてのユーザーが取得できること() {
+    List<User> users = userMapper.findAll();
+    assertThat(users)
+        .hasSize(3)
+        .contains(
+            new User(1, "清水"),
+            new User(2, "小山"),
+            new User(3, "田中")
+        );
+  }
 
-    @Test
-    @DataSet(value = "empty.yml")
-    @ExpectedDataSet(value = "expectedAfterInsert.yml", ignoreCols = "id")
-    void ユーザーの登録ができること() {
-        userMapper.save("小山");
-    }
+  @Test
+  @DataSet(value = "empty.yml")
+  @ExpectedDataSet(value = "expectedAfterInsert.yml", ignoreCols = "id")
+  void ユーザーの登録ができること() {
+    User user = new User("小山");
+    userMapper.save(user);
+  }
 }
 

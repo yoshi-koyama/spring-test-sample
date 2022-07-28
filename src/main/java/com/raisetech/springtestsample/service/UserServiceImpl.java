@@ -11,19 +11,21 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    private final UserMapper userMapper;
+  private final UserMapper userMapper;
 
-    public UserServiceImpl(UserMapper userMapper) {
-        this.userMapper = userMapper;
-    }
+  public UserServiceImpl(UserMapper userMapper) {
+    this.userMapper = userMapper;
+  }
 
-    @Override
-    public List<User> findAllUsers() {
-        return userMapper.findAll();
-    }
+  @Override
+  public List<User> findAllUsers() {
+    return userMapper.findAll();
+  }
 
-    @Override
-    public void saveUser(String name) {
-        userMapper.save(name);
-    }
+  @Override
+  public int saveUser(String name) {
+    User user = new User(name);
+    userMapper.save(user);
+    return user.getId();
+  }
 }
