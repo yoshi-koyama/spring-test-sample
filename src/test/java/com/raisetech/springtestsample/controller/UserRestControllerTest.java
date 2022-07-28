@@ -53,7 +53,7 @@ class UserRestControllerTest {
   @ExpectedDataSet(value = "expectedAfterInsert.yml", ignoreCols = "id")
   void ユーザーが登録できること() throws Exception {
     String response = mockMvc.perform(MockMvcRequestBuilders.post("/api/users").contentType(MediaType.APPLICATION_JSON).content("{\"name\":\"小山\"}"))
-        .andExpect(MockMvcResultMatchers.status().isCreated())
+        .andExpect(MockMvcResultMatchers.status().isOk())
         .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
     JSONAssert.assertEquals("{\"message\":\"user created\"}", response, JSONCompareMode.STRICT);
   }
