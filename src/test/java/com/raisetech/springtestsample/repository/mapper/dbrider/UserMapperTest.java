@@ -1,9 +1,10 @@
-package com.raisetech.springtestsample.repository.mapper;
+package com.raisetech.springtestsample.repository.mapper.dbrider;
 
 import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.core.api.dataset.ExpectedDataSet;
 import com.github.database.rider.spring.api.DBRider;
 import com.raisetech.springtestsample.repository.entity.User;
+import com.raisetech.springtestsample.repository.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
