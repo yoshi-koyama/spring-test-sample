@@ -24,7 +24,7 @@ class UserMapperTest {
   UserMapper userMapper;
 
   @Test
-  @DataSet(value = "users.yml")
+  @DataSet(value = "datasets/users.yml")
   @Transactional
   void すべてのユーザーが取得できること() {
     List<User> users = userMapper.findAll();
@@ -38,8 +38,8 @@ class UserMapperTest {
   }
 
   @Test
-  @DataSet(value = "empty.yml")
-  @ExpectedDataSet(value = "expectedAfterInsert.yml", ignoreCols = "id")
+  @DataSet(value = "datasets/empty.yml")
+  @ExpectedDataSet(value = "datasets/expectedAfterInsert.yml", ignoreCols = "id")
   @Transactional
   void ユーザーの登録ができること() {
     User user = new User("小山");
