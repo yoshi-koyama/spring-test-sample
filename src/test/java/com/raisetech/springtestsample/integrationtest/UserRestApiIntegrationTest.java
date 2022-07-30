@@ -1,4 +1,4 @@
-package com.raisetech.springtestsample.controller;
+package com.raisetech.springtestsample.integrationtest;
 
 import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.core.api.dataset.ExpectedDataSet;
@@ -22,7 +22,7 @@ import java.nio.charset.StandardCharsets;
 @AutoConfigureMockMvc
 @DBRider
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class UserRestControllerTest {
+class UserRestApiIntegrationTest {
 
   @Autowired
   MockMvc mockMvc;
