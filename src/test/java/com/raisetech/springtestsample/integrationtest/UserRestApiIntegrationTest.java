@@ -32,7 +32,7 @@ class UserRestApiIntegrationTest {
   @Transactional
   void ユーザーが取得できること() throws Exception {
     String response = mockMvc.perform(MockMvcRequestBuilders.get("/api/users"))
-        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.status().is5xxServerError())
         .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
     JSONAssert.assertEquals("[" +
         "  {" +
